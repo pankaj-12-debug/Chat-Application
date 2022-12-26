@@ -24,7 +24,7 @@ btn.addEventListener('click', (e) => {
             console.log(response.data);
             if(response.status===201){
             alert('Successfuly signed up');
-         //   window.location.href='../login/login.html'
+            window.location.href='../login/index.html'
             }
             else{
                 alert('Something is wrong');
