@@ -17,7 +17,7 @@ btn.addEventListener('click',(e)=>{
         alert('login successful');
         localStorage.setItem('token',response.data.token);
         localStorage.setItem('userDetails', JSON.stringify(response.data.user));
-     //   window.location.href='../expense/index.html';
+        window.location.href='../chat/chat.html';
     })
     .catch(err=>{
         console.log(err);
