@@ -1,4 +1,5 @@
 const User=require('../model/user');
+const Message=require('../model/message');
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 const saltRounds = 10;
@@ -50,6 +51,10 @@ exports.postData=(req,res,next)=>{
                     console.log(JSON.stringify(user));
                   //  const jwtToken = generateAccessToken(user[0].id);
                     res.status(200).json({ success: true, message: 'successfully logged in',token:generateAccessToken(user[0].id)});
+                    return Message.create({
+                        messageText:"JOINED",
+                        name:user[0].name
+                    })
                 }
                 else {
                     return res.status(401).json({success: false, message: 'password do not match'});
