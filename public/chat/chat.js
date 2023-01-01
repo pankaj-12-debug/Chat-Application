@@ -16,16 +16,19 @@ document.getElementsByClassName('btn')[0].addEventListener('click',()=>{
     }
     axios.post('http://localhost:3000/sendMessage',Obj, { headers: { 'Authorization': token } })
     .then(result=>{
-        let userName=result.data.user.name;
-        showMessage(chatMessage,userName);
+      //  let userName=result.data.user.name;
+        //showMessage(chatMessage,userName);
+ window.location.reload()
     })
     .catch(err=>{
         console.log('sendMessage is not working');
     })
 })
-window.addEventListener('DOMContentLoaded',()=>{
+//window.addEventListener('DOMContentLoaded',()=>{
+    setTimeout(()=>{ 
     axios.get('http://localhost:3000/getAllMessage').then(response=>{
         let message=response.data.result;
+        chatMessage.innerHTML='';
         message.forEach(element => {
             console.log(element);
            if(element.messageText=='JOINED'){
@@ -42,4 +45,4 @@ window.addEventListener('DOMContentLoaded',()=>{
         console.log(err);
         console.log('get all message error');
     })
-})
+},1000);
