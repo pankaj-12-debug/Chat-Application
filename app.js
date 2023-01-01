@@ -6,12 +6,19 @@ const app=express();
 
 //router
 const SignupRouter=require('./router/signup');
+const ChatRouter=require('./router/chat');
 
 //model
 const User=require('./model/user');
+const Message=require('./model/message');
 app.use(bodyParser.json());
 app.use(cors());
 app.use(SignupRouter);
+app.use(ChatRouter);
+
+//association
+User.hasMany(Message);
+Message.belongsTo(User);
 
 sequelize
   .sync()
