@@ -1,5 +1,6 @@
 const user=require('../model/user');
 const message=require('../model/message');
+const {Op}=require('sequelize');
 // store the message and name into database 
 exports.sendMessage=(req,res,next)=>{
     req.user.createMessage({messageText:req.body.chatMessage,name:req.user.name})
@@ -13,7 +14,12 @@ exports.sendMessage=(req,res,next)=>{
 }
 // referesh the page it always show all message and name
 exports.getAllMessage=(req,res,next)=>{
-message.findAll({attributes:['messageText','name']}).then(result=>{
+//message.findAll({attributes:['messageText','name']})
+let lastMessageId = req.query.lastMessageId;
+// where id>lastMessageId 
+message.findAll({ where:{id: {[Op.gt]:lastMessageId}}})
+//message.findAll({ where:{id:{[pp.gt]:lastMessageId}}})
+.then(result=>{
     res.status(200).json({message:"successfully",result})
 })
 .catch(err=>{
