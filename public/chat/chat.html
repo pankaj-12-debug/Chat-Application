@@ -8,9 +8,34 @@
     <link rel="stylesheet" href="./chat.css">
 </head>
 <body>
-    <div class="centered">
+    <div class="left">
+        <h1>Group chat</h1>
+        <button id="addGroup">Add Group</button>
+        <form id="addGroupForm" class="hidden">
+            <label for="Group Name">Group Name</label>
+            <br>
+            <input type="text" id="inputGroupName" size="50">
+            <br>
+            <button id="addGroupSubmitButton">Submit</button>
+        </form>
+        <div id="availableGroup">
+            <h1>Available Group</h1>
+        </div>
+        <div class="hidden" id="addUserForm">
+            <h1>Add User</h1>
+            <form id="addGroupForm" >
+                <label for="name">Enter Email</label>
+                <br>
+                <input type="text" id="inputEmail" size="50">
+                <br>
+                <button id="addUserSubmitButton">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="right">
         <div id="chatHeader">
-            <h1>Group Chat</h1>
+           <!-- <h1>Group Chat</h1>-->
         </div>
         <div id="chatMessage">
     
